@@ -1,3 +1,7 @@
+<%= link_to destroy_user_session_path, method: :delete do %>
+<i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+<% end %>
+
 <div class="container">
   <h1>Liste des requests</h1>
   <table class="table">
@@ -16,7 +20,7 @@
         <td><%= request.phone_number %></td>
         <td><%= request.bio %></td>
         <td><%= request.status %></td>
-        <% unless request.status == "accepted" %>
+        <% if request.status == "confirmed" %>
           <td><%= link_to "accept", request_path(request), method: :patch %></td>
         <% end %>
       </tr>
