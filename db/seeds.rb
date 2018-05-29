@@ -7,9 +7,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "cleaning"
-Request.destroy_all
 
-puts "creating"
+Request.destroy_all
+User.destroy_all
+
+puts "seeding"
+
+User.create!(email: "admin@coworking.com", password: "123456")
 
 20.times { Request.create!(
             name: Faker::StarWars.character,
@@ -21,7 +25,5 @@ requests = Request.all
 requests[4,5].each { |request| request.update(status: "confirmed")}
 requests[9,5].each { |request| request.update(status: "accepted")}
 requests[14,5].each { |request| request.update(status: "expired")}
-
-
 
 puts "done"

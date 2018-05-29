@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-   skip_before_action :authenticate_user!, only: [:new, :create]
+   skip_before_action :authenticate_user!, except: [:index, :update]
 
   def new
     @request = Request.new
@@ -35,7 +35,7 @@ class RequestsController < ApplicationController
       flash[:error] = "Désolé, utilisateur non connu"
       redirect_to "/"
     end
-end
+  end
 
 end
 
