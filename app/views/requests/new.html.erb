@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>New request</h1>
+   <%= simple_form_for @request do |f| %>
+      <%= f.input :name, placeholder: "Elon Musk" %>
+      <%= f.input :email, placeholder: "elon@spacex.com" %>
+      <%= f.input :phone_number, placeholder: "0123456789" %>
+      <%= f.input :bio, placeholder: "I love Ruby", as: :text %>
+      <%= f.submit "Request", class: "btn btn-primary"  %>
+    <% end %>
+</div>

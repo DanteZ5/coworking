@@ -1,2 +1,5 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <h1>Bienvenue dans l'app de réservation de places</h1>
+  <%= link_to "S'inscrire", new_request_path, class: "btn btn-primary" %>
+  <%= link_to "Superviser", requests_path, class: "btn btn-primary" %>
+</div>

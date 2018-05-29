@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Liste des requests</h1>
+  <table class="table">
+      <tr>
+        <th>name</th>
+        <th>email</th>
+        <th>tel</th>
+        <th>bio</th>
+        <th>status</th>
+        <th>action</th>
+      </tr>
+      <% @requests.each do |request| %>
+      <tr>
+        <td><%= request.name %></td>
+        <td><%= request.email %></td>
+        <td><%= request.phone_number %></td>
+        <td><%= request.bio %></td>
+        <td><%= request.status %></td>
+        <% unless request.status == "accepted" %>
+          <td><%= link_to "accept", request_path(request), method: :patch %></td>
+        <% end %>
+      </tr>
+      <% end %>
+    </table>
+</div>
