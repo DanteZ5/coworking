@@ -25,6 +25,18 @@ class RequestsController < ApplicationController
     redirect_to requests_path
   end
 
+  def confirm_email
+    request = Request.find_by_confirm_token(params[:id])
+    if request
+      request.email_confirmed!
+      flash[:success] = "Votre email est bien confirmé, vous êtes sur liste d'attente"
+      redirect_to "/"
+    else
+      flash[:error] = "Désolé, utilisateur non connu"
+      redirect_to "/"
+    end
+end
+
 end
 
 private

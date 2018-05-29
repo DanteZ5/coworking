@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :requests, only: [:index, :new, :create, :update]
+  resources :requests, only: [:index, :new, :create, :update] do
+    member do
+      get :confirm_email
+    end
+  end
 
   devise_for :users
   root to: 'pages#home'

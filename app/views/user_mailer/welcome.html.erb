@@ -2,4 +2,5 @@
 
 <p>
   Afin de confirmer ton inscription sur la liste d'attente, merci de bien vouloir confirmer ton adresse email en cliquant ici
+  <%= confirm_email_request_url(@request.confirm_token) %>
 </p>
