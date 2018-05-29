@@ -2,6 +2,19 @@
 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
 <% end %>
 
+<ul>
+  <li><%= link_to "Toutes", requests_path %></li>
+  <li><%= link_to "les non confirmées", requests_path(status: "unconfirmed") %></li>
+  <li><%= link_to "les confirmées", requests_path(status: "confirmed") %></li>
+  <li><%= link_to "les acceptées", requests_path(status: "accepted") %></li>
+  <li><%= link_to "les expirées", requests_path(status: "expired") %></li>
+</ul>
+
+
+
+
+
+
 <div class="container">
   <h1>Liste des requests</h1>
   <table class="table">
@@ -11,7 +24,9 @@
         <th>tel</th>
         <th>bio</th>
         <th>status</th>
-        <th>action</th>
+        <% if params[:status].nil? || params[:status] == "confirmed" %>
+          <th>action</th>
+        <% end %>
       </tr>
       <% @requests.each do |request| %>
       <tr>

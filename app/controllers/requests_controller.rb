@@ -16,13 +16,24 @@ class RequestsController < ApplicationController
   end
 
   def index
-    @requests = Request.all
+    status = params[:status]
+    if status == "unconfirmed"
+      @requests = Request.unconfirmed
+    elsif status == "confirmed"
+      @requests = Request.confirmed
+    elsif status == "accepted"
+      @requests = Request.accepted
+    elsif status == "expired"
+      @requests = Request.expired
+    else
+       @requests = Request.all
+    end
   end
 
   def update
     @request = Request.find(params[:id])
     @request.accept!
-    redirect_to requests_path
+    redirect_to requests_path(status: "confirmed")
   end
 
   def confirm_email
