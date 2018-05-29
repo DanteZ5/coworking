@@ -8,6 +8,7 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new(request_params)
     if @request.save
+      UserMailer.welcome(@request).deliver_now
       redirect_to "/"
     else
       render :new

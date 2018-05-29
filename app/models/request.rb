@@ -1,4 +1,5 @@
 class Request < ApplicationRecord
+
   validates :name, presence: true
   validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }, presence: true
   validates :phone_number, presence: true, format: { with: /\A0\d{9}$\z/ }
@@ -7,5 +8,7 @@ class Request < ApplicationRecord
   def accept!
     self.update(status: "accepted")
   end
+
+
 
 end
