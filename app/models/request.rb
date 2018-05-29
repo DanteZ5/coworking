@@ -22,11 +22,28 @@ class Request < ApplicationRecord
     Request.where(status: "expired")
   end
 
+  # checker est éxécuté par un free job Heroku quotidien
+  # Il parse la base Request et envoie un mail aux demandes confirmees qui ont depassées 91 jours d'attente
+  def self.checker
+    requests = Request.confirmed
+    requests.each do |request|
+      if ((Time.now - request.updated_at) / 3600 / 24) > 91
+        UserMailer.check(request).deliver_now
+        request.status == "expired"
+      end
+    end
+  end
+
   def accept!
     self.update(status: "accepted")
   end
 
   def email_confirmed!
+    self.update(status: "confirmed")
+  end
+
+  # meme fonction, mais pas meme usage
+  def renew!
     self.update(status: "confirmed")
   end
 

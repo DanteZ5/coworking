@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :requests, only: [:index, :new, :create, :update] do
     member do
       get :confirm_email
+      get :confirm_presence
     end
   end
 

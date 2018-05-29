@@ -1,0 +1,6 @@
+<h1>Confirmation</h1>
+
+<p>
+  Ça fait maintenant 3 mois que vous êtes en attente d'une place au coworking, si vous êtes toujours en attente d'une place, merci de cliquer sur le lien
+  <%= confirm_presence_request_url(@request.confirm_token) %>
+</p>

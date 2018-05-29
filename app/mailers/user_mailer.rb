@@ -10,4 +10,9 @@ class UserMailer < ApplicationMailer
 
     mail(to: @request.email, subject: 'Bienvenue sur la liste Coworking')
   end
+
+  def check(request)
+    @request = request
+    mail(to: @request.email, subject: 'Confirmez votre interet pour le Coworking')
+  end
 end

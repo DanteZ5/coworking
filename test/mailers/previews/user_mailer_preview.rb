@@ -7,4 +7,10 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.welcome(request)
   end
 
+  def check
+    request = Request.last
+    UserMailer.check(request)
+  end
+
+
 end
