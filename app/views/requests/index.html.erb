@@ -1,22 +1,18 @@
-<%= link_to destroy_user_session_path, method: :delete do %>
-<i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+<%= link_to destroy_user_session_path, method: :delete, id: "logout" do %>
+  <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
 <% end %>
-
-<ul>
-  <li><%= link_to "Toutes", requests_path %></li>
-  <li><%= link_to "les non confirmées", requests_path(status: "unconfirmed") %></li>
-  <li><%= link_to "les confirmées", requests_path(status: "confirmed") %></li>
-  <li><%= link_to "les acceptées", requests_path(status: "accepted") %></li>
-  <li><%= link_to "les expirées", requests_path(status: "expired") %></li>
-</ul>
-
-
-
 
 
 
 <div class="container">
-  <h1>Liste des requests</h1>
+  <h1>Liste des requests : <%= @requests.size %></h1>
+  <div class="tabs">
+    <%= link_to "Toutes", requests_path, class: "tab" %>
+    <%= link_to "les non confirmées", requests_path(status: "unconfirmed"), class: "tab" %>
+    <%= link_to "les confirmées", requests_path(status: "confirmed"), class: "tab" %>
+    <%= link_to "les acceptées", requests_path(status: "accepted"), class: "tab" %>
+    <%= link_to "les expirées", requests_path(status: "expired"), class: "tab" %>
+  </div>
   <table class="table">
       <tr>
         <th>name</th>

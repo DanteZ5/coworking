@@ -1,0 +1,35 @@
+.tabs {
+  display: flex;
+}
+.tabs a {
+  color: white;
+}
+.tabs a:hover {
+  cursor: pointer;
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.tab {
+  background: #469AE0;
+  flex: 0 0 20%;
+  text-align: center;
+  padding: 20px 0;
+}
+.tab:first-child {
+  border-radius: 10px 0 0 0;
+}
+.tab:last-child {
+  border-radius: 0 10px 0 0;
+}
+
+.table {
+  font-size: 13px;
+}
+
+#logout {
+  font-size: 13px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}

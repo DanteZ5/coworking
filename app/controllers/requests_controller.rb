@@ -9,6 +9,7 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     if @request.save
       UserMailer.welcome(@request).deliver_now
+      flash[:success] = "Merci de consulter votre boîte mail pour une inscription définitive"
       redirect_to "/"
     else
       render :new
