@@ -1,6 +1,8 @@
-<%= link_to destroy_user_session_path, method: :delete, id: "logout" do %>
-  <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+<%= link_to "home", root_path, id: "home" %>
+<% if current_user %>
+<%= link_to "disconnect", destroy_user_session_path, method: :delete, id: "logout" %>
 <% end %>
+
 
 
 
@@ -15,13 +17,13 @@
   </div>
   <table class="table">
       <tr>
-        <th>name</th>
+        <th>Nom</th>
         <th>email</th>
-        <th>tel</th>
-        <th>bio</th>
-        <th>status</th>
+        <th>Tel</th>
+        <th>Bio</th>
+        <th>Status</th>
         <% if params[:status].nil? || params[:status] == "confirmed" %>
-          <th>action</th>
+          <th>Action</th>
         <% end %>
       </tr>
       <% @requests.each do |request| %>

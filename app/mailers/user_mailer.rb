@@ -8,11 +8,11 @@ class UserMailer < ApplicationMailer
   def welcome(request)
     @request = request
 
-    mail(to: @request.email, subject: 'Bienvenue sur la liste Coworking')
+    mail(to: @request.email, subject: 'Bienvenue sur la liste Coworkiing')
   end
 
   def check(request)
     @request = request
-    mail(to: @request.email, subject: 'Confirmez votre interet pour le Coworking')
+    mail(to: @request.email, subject: 'Confirmez votre interet pour le Coworkiing')
   end
 end
