@@ -62,7 +62,6 @@ class RequestsController < ApplicationController
     end
   end
 
-end
 
 private
 
@@ -70,3 +69,4 @@ private
     #white list
     params.require(:request).permit(:name, :email, :phone_number, :bio, :status)
   end
+end
